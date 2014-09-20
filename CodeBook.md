@@ -61,6 +61,7 @@ There are 5 parts:
 
 ####merged_data-
 This dataset is obtained after performing the transformation steps 1 to 4 on the raw datasets.
+
 1. Merging the training and the test sets- First of all, the different datasets(test and train datasets) were read into R and stored into separate objects.Then the test and train datasets were merged.
 
 2.Extracting only the measurements on the mean and standard deviation- "features.txt" file was read into R, then the indices where measurements of mean or std (standard deviation) appear were noted, and with the help of these indices only the required measurements (columuns) were subsetted.
@@ -77,7 +78,7 @@ After performing the step 1 to 4 and getting the merged_data, the step 5 is spec
 5.Creating a second, independent tidy data set with the average of each variable for each activity and each subject- Using two nested for loops, one looping over subjects and over activity, the resultant tidy dataset was obtained.
 After this transformation, the resultant tidy dataset was written out in final_Means_data.txt file.
 
-PS- I know there are better ways of doing this in R, but because of my C programming background, for loops sort of comes naturally to me.
+PS- I know there are better ways of doing this in R, but because of my C programming background, "for" loops sort of comes naturally to me.
 
 
 Original description of the dataset:
