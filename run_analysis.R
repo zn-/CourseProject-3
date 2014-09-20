@@ -3,16 +3,17 @@
   # Reading the train datasets into separate variables
 train_Data <- read.table("./data/train/X_train.txt")
 train_Label <- read.table("./data/train/y_train.txt")
-table(train_Label)
 train_Subject <- read.table("./data/train/subject_train.txt")
+
   # Reading the test datasets into separate variables
 test_Data <- read.table("./data/test/X_test.txt")
 test_Label <- read.table("./data/test/y_test.txt") 
-table(test_Label) 
 test_Subject <- read.table("./data/test/subject_test.txt")
+
 if ( length(test_Label) != length(test_Subject) || length(test_Label) != dim(test_Data)[1] ) {
   stop('dimensions of test data set does not match')
 }
+
 if ( length(train_Label) != length(train_Subject) || length(train_Label) != dim(train_Data)[1] ) {
   stop('dimensions of training data set does not match')
 }
@@ -26,8 +27,10 @@ joinedSubject <- rbind(train_Subject, test_Subject)
 
 features <- read.table("./data/features.txt")
 mean_StdIndices <- grep("mean\\(\\)|std\\(\\)", features[, 2])
+
   # Extracting only mean and standard deviation for each measurement
 joinedData <- joinedData[, mean_StdIndices] 
+
   # Modifying the variables names
 names(joinedData) <- gsub("\\(\\)", "", features[mean_StdIndices, 2]) # removing "()"
 names(joinedData) <- gsub("mean", "Mean", names(joinedData)) # capitalizing M
@@ -35,10 +38,13 @@ names(joinedData) <- gsub("std", "Std", names(joinedData)) # capitalizing S
 names(joinedData) <- gsub("-", "", names(joinedData)) # removing "-" in column names 
 
 # 3. Using  descriptive activity names to name the activities in the data set
+
   # Reading the activity labels
 activity <- read.table("./data/activity_labels.txt")
+
   # Making all the characters in activity to lower case
 activity[, 2] <- tolower(gsub("_", "", activity[, 2]))
+
   # for joined words walkingupstairs and walkingdownstairs, making the first letter of second work upper case 
 substr(activity[2, 2], 8, 8) <- toupper(substr(activity[2, 2], 8, 8))
 substr(activity[3, 2], 8, 8) <- toupper(substr(activity[3, 2], 8, 8))

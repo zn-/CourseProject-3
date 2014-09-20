@@ -10,6 +10,18 @@ Describing the flow of procedures to follow in order use the function to get a t
 
 -Then, use source("run_analysis.R") command to run function which performs the required 5 steps on the data.
 
+-The R script carry out the following transformations-
+*1.Merging the training and the test sets to create one data set.
+
+*2.Extracting only the measurements on the mean and standard deviation for each measurement.
+
+*3.Using descriptive activity names to name the activities in the data set.
+
+*4.Appropriately labelling the data set with descriptive activity names.
+
+*5.Creating a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+
 -After running run_analysis.R,  two output files are generated in the current working directory:
 
         *merged_data.txt : containing a data frame called cleanedData with 10299X68 dimension.
